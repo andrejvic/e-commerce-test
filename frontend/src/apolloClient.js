@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:8000/graphql", // Zameni sa svojim backend URL-om
+  uri: "https://andrejvicanovic.com/api/public/graphql", // Zameni sa svojim backend URL-om
   cache: new InMemoryCache(),
 });
 

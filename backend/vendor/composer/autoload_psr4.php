@@ -8,5 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'GraphQL\\' => array($vendorDir . '/webonyx/graphql-php/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
-    'App\\' => array($baseDir . '/backend'),
+    'App\\' => array($baseDir . '/src'),
 );
