@@ -42,6 +42,11 @@ class ProductDetails extends Component {
           return acc;
         }, {});
 
+        const emptyAttributes = Object.keys(attributes).reduce((acc, key) => {
+          acc[key] = null; // Nijedan atribut nije selektovan
+          return acc;
+        }, {});
+
         const defaultAttributes = Object.keys(attributes).reduce((acc, key) => {
           acc[key] = attributes[key][0]; // Prva vrednost za svaki atribut
           return acc;
@@ -50,7 +55,7 @@ class ProductDetails extends Component {
         this.setState({
           product: data.product,
           groupedAttributes: attributes,
-          selectedAttributes: defaultAttributes,
+          selectedAttributes: emptyAttributes,
           loading: false,
         });
       } else {
@@ -75,10 +80,13 @@ class ProductDetails extends Component {
   };
 
   addToCart = () => {
+    const { toggleCartOverlay } = this.context; // Pristup funkciji iz konteksta
     const { product, selectedAttributes } = this.state;
+
     if (product) {
       this.context.showMessage("Successfully added to the cart.");
       this.context.addToCart(product, selectedAttributes);
+      toggleCartOverlay(); // Automatski otvaranje Cart Overlay-a
     }
   };
 
@@ -106,7 +114,9 @@ class ProductDetails extends Component {
 
     const allAttributesSelected =
       Object.keys(groupedAttributes).length ===
-      Object.keys(selectedAttributes).length;
+      Object.keys(selectedAttributes).filter(
+        (key) => selectedAttributes[key] !== null
+      ).length;
 
     return (
       <div className="product-details-page">
@@ -130,7 +140,7 @@ class ProductDetails extends Component {
             data-testid="add-to-cart"
             disabled={!product.inStock || !allAttributesSelected}
           >
-            {product.inStock ? "Add to cart" : "Out of stock"}
+            ADD TO CART
           </button>
 
           <div

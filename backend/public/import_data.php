@@ -1,10 +1,11 @@
 <?php
 
 // Podešavanje konekcije
-$host = '127.0.0.1';
-$dbName = 'ecommerce';
-$user = 'root';
-$password = '';
+$host = 'localhost'; // Obično je localhost na Hostingeru
+$dbName = 'u695683512_ecommerce'; // Ime vaše baze
+$user = 'u695683512_user'; // MySQL korisničko ime
+$password = '07955Hj324'; // MySQL lozinka
+
 
 try {
     // Kreiranje PDO konekcije

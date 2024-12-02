@@ -1,12 +1,11 @@
-// App.js
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ProductList from "./components/Product/ProductList";
-import CartContext from "./context/CartContext"; // Import CartContext
+import CartContext from "./context/CartContext";
 import ProductDetails from "./pages/ProductDetails";
 import Header from "./components/Header/Header";
-import CartMessage from "./components/Header/CartMessage";
+import { CategoryProvider } from "./context/CategoryContext";
 
 class App extends Component {
   static contextType = CartContext;
@@ -16,17 +15,19 @@ class App extends Component {
 
     return (
       <Router>
-        <Header />
-        <CartMessage />
-        <div className="App">
-          {showCartOverlay && (
-            <div className="gray-overlay" onClick={toggleCartOverlay}></div>
-          )}
-          <Routes>
-            <Route path="/" element={<ProductList />} />
-            <Route path="/product/:productId" element={<ProductDetails />} />
-          </Routes>
-        </div>
+        <CategoryProvider>
+          <Header />
+          <div className="App">
+            {showCartOverlay && (
+              <div className="gray-overlay" onClick={toggleCartOverlay}></div>
+            )}
+            <Routes>
+              <Route path="/" element={<ProductList />} />
+              <Route path="/:categoryName" element={<ProductList />} />
+              <Route path="/product/:productId" element={<ProductDetails />} />
+            </Routes>
+          </div>
+        </CategoryProvider>
       </Router>
     );
   }

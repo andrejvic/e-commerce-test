@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import CartContext from "../../context/CartContext";
+import CartContext from "../../../context/CartContext";
 
-import cart_icon from "../../assets/icons/cart.png";
-import "./Header.css";
+import cart_icon from "../../../assets/icons/cart.png";
+import "../Header.css";
 
 class CartButton extends Component {
   static contextType = CartContext;

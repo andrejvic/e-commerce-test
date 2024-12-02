@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { groupAttributes } from "../../hoc/groupAttributes";
 
 class AttributesSelector extends Component {
   render() {
@@ -9,17 +10,7 @@ class AttributesSelector extends Component {
       itemId,
       mode = "product", // "product" or "cart"
     } = this.props;
-
-    // Ensure attributes is an array
-    const groupedAttributes = Array.isArray(attributes)
-      ? attributes.reduce((acc, attr) => {
-          if (!acc[attr.name]) {
-            acc[attr.name] = [];
-          }
-          acc[attr.name].push(attr.value);
-          return acc;
-        }, {})
-      : {}; // Default to empty object if attributes is not an array
+    const groupedAttributes = groupAttributes(attributes);
 
     return (
       <div className={`attributes-selector ${mode}-attributes`}>

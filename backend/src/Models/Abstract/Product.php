@@ -10,14 +10,24 @@ abstract class Product {
     protected int $categoryId;
     protected string $brand;
 
-    public function __construct(string $id, string $name, int $inStock, string $description, int $categoryId, string $brand) {
+    public function __construct(
+        string $id,
+        string $name,
+        int $inStock,
+        string $description,
+        int $categoryId,
+        string $brand,
+        string $categoryName = "" // Podrazumevano prazan string
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->inStock = $inStock;
         $this->description = $description;
         $this->categoryId = $categoryId;
         $this->brand = $brand;
+        $this->categoryName = $categoryName; // Dodavanje categoryName
     }
+    
 
     public function getId(): string {
         return $this->id;

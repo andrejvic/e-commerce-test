@@ -9,6 +9,7 @@ class ProductCard extends Component {
   static contextType = CartContext;
 
   handleQuickAdd = () => {
+    const { toggleCartOverlay } = this.context;
     const { product } = this.props;
 
     // Automatically set the first attribute for each available attribute
@@ -21,6 +22,7 @@ class ProductCard extends Component {
     // Add the product with default attributes to the cart
     this.context.showMessage("Successfully added to the cart.");
     this.context.addToCart(product, defaultAttributes);
+    toggleCartOverlay();
   };
 
   render() {

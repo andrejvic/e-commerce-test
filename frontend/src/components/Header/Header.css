@@ -37,7 +37,8 @@
   margin: 0;
 }
 
-.menu-item {
+.menu-item a {
+  text-decoration: none;
   cursor: pointer;
   margin-left: 5px;
   color: #000;
@@ -47,17 +48,17 @@
   transition: color 0.3s, border-bottom 0.3s;
 }
 
-.menu-item:hover {
+.menu-item:hover a {
   color: #60cc7c; /* Green color for hover */
 }
 
-.active-category {
+.active-category a {
   color: #60cc7c;
   font-weight: bold;
   position: relative;
 }
 
-.active-category::after {
+.active-category a::after {
   content: "";
   position: absolute;
   left: 0;

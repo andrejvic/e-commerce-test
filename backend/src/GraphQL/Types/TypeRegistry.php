@@ -37,6 +37,7 @@ class TypeRegistry {
                         'name' => Type::string(),
                         'description' => Type::string(),
                         'category_id' => Type::int(),
+                        'category_name' => Type::string(), // Dodato polje
                         'inStock' => Type::boolean(),
                         'attributes' => Type::listOf(self::attributeType()),
                         'gallery' => Type::listOf(Type::string()),
@@ -47,6 +48,7 @@ class TypeRegistry {
         }
         return self::$productType;
     }
+    
 
     public static function attributeType(): Type {
         if (!self::$attributeType) {

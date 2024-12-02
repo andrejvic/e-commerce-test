@@ -8,6 +8,7 @@ export const GET_PRODUCTS = gql`
       description
       inStock
       category_id
+      category_name
       attributes {
         name
         value

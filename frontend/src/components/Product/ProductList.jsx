@@ -1,67 +1,39 @@
 import React, { Component } from "react";
-import { withApollo } from "@apollo/client/react/hoc";
 import { GET_PRODUCTS } from "../../graphql/queries";
-import CartContext from "../../context/CartContext";
 import CategoryContext from "../../context/CategoryContext";
 import ProductCard from "./ProductCard";
-import CartMessage from "../Header/CartMessage";
-
+import withQuery from "../../hoc/withQuery";
 import "./ProductList.css";
-// import "./ProductList.css"; // Dodaj stilove
 
 class ProductList extends Component {
-  state = {
-    products: [],
-    loading: true,
-    error: null,
-  };
-
-  async componentDidMount() {
-    const client = this.props.client;
-    await this.fetchProducts(client);
-  }
-
-  fetchProducts = async (client) => {
-    try {
-      const { data } = await client.query({
-        query: GET_PRODUCTS,
-      });
-
-      this.setState({ products: data.products, loading: false });
-    } catch (error) {
-      this.setState({ error, loading: false });
-    }
-  };
-
   render() {
-    if (this.state.loading) {
+    const { data, loading, error } = this.props;
+
+    if (loading) {
       return <p>Loading...</p>;
     }
 
-    if (this.state.error) {
-      return <p>Error: {this.state.error.message}</p>;
+    if (error) {
+      return <p>Error: {error.message}</p>;
     }
 
     return (
       <CategoryContext.Consumer>
         {({ activeCategory }) => {
-          // Filter products based on the active category
-          const filteredProducts = this.state.products.filter((product) => {
-            if (activeCategory.id === "all") {
-              return true; // If "all", display all products
+          const filteredProducts = data.products.filter((product) => {
+            if (activeCategory.name.toLowerCase() === "all") {
+              return true;
             }
 
-            if (!product.category_id) {
-              console.warn(`Product ${product.name} is missing a category_id!`);
-              return false; // Exclude products without category_id from the display
-            }
-
-            return product.category_id === parseInt(activeCategory.id);
-          }); // Connect App to CartContext
+            return (
+              product.category_name &&
+              product.category_name.toLowerCase() ===
+                activeCategory.name.toLowerCase()
+            );
+          });
 
           return (
             <div className="product-list">
-              <CartMessage />
               <h2>{activeCategory.name}</h2>
               <ul className="product-list-ul">
                 {filteredProducts.map((product) => (
@@ -76,4 +48,5 @@ class ProductList extends Component {
   }
 }
 
-export default withApollo(ProductList);
+// Wrap the ProductList component with the withQuery HOC
+export default withQuery(ProductList, GET_PRODUCTS);

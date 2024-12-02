@@ -1,16 +1,11 @@
 import React, { Component } from "react";
+import { groupAttributes } from "../../../hoc/groupAttributes";
 
 class CartItemAttributes extends Component {
   render() {
     const { attributes, selectedAttributes } = this.props;
 
-    const groupedAttributes = attributes.reduce((acc, attr) => {
-      if (!acc[attr.name]) {
-        acc[attr.name] = [];
-      }
-      acc[attr.name].push(attr.value);
-      return acc;
-    }, {});
+    const groupedAttributes = groupAttributes(attributes);
 
     return (
       <>
@@ -37,9 +32,7 @@ class CartItemAttributes extends Component {
                   padding: "10px",
                   margin: "5px",
                 }}
-                data-testid={`cart-item-attribute-${attributeName.toLowerCase()}-${value.toLowerCase()}${
-                  selectedAttributes[attributeName] === value ? "-selected" : ""
-                }`}
+                data-testid={`product-attribute-${attributeName.toLowerCase()}-${value.toUpperCase()}`}
               >
                 {attributeName === "Color" ? (
                   <span
@@ -59,3 +52,6 @@ class CartItemAttributes extends Component {
 }
 
 export default CartItemAttributes;
+// ${
+//   selectedAttributes[attributeName] === value ? "-selected" : ""
+// }

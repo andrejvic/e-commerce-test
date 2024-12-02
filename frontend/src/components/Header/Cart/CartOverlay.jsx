@@ -1,6 +1,6 @@
 // CartOverlay.jsx
 import React, { Component } from "react";
-import CartContext from "../../context/CartContext";
+import CartContext from "../../../context/CartContext";
 import CartItemAttributes from "./CartItemAttributes";
 import "./CartOverlay.css";
 
@@ -15,7 +15,7 @@ class CartOverlay extends Component {
     const { getTotalItemsCount } = this.context;
     const totalItems = getTotalItemsCount();
     return (
-      <div className="cart-overlay">
+      <div className="cart-overlay" data-testid="cart-overlay">
         <h2 className="cart-title">
           My Bag, {totalItems} {totalItems <= 1 ? "item" : "items"}
         </h2>

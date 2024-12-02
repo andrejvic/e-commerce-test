@@ -9,7 +9,7 @@ class ConcreteProduct extends Product {
             'name' => $this->name,
             'inStock' => $this->inStock,
             'description' => $this->description,
-            'categoryId' => $this->categoryId,
+            'categoryName' => $this->categoryName,
             'brand' => $this->brand,
         ];
     }

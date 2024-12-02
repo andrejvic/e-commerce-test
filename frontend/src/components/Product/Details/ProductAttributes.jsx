@@ -42,7 +42,7 @@ class ProductAttributes extends Component {
                     height: isColorAttribute ? "32px" : "auto",
                     backgroundColor: isColorAttribute ? value : "white",
                   }}
-                  data-testid={`product-attribute-${attributeName.toLowerCase()}-${value.toLowerCase()}`}
+                  data-testid={`product-attribute-${attributeName.toLowerCase()}-${value.toUpperCase()}`}
                 >
                   {!isColorAttribute && value}
                 </button>
