@@ -1,0 +1,196 @@
+.cart-overlay {
+  position: absolute;
+  top: 80px;
+  right: 10%;
+  background-color: #fff;
+  width: 400px;
+  padding: 20px;
+
+  font-family: Arial, sans-serif;
+  z-index: 99;
+}
+
+.cart-title {
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cart-items-list {
+  height: 400px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+.product-details {
+  width: 100%;
+  display: flex;
+}
+.product-image {
+  max-width: 150px !important;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+.product-info {
+  max-height: 300px;
+  flex-grow: 1;
+}
+.product-info .attribute-selector {
+  min-height: 50px;
+  height: auto;
+}
+.product-info .attribute-selector label {
+  font-family: "Raleway";
+  text-transform: capitalize;
+  font-size: 14px !important;
+  font-weight: 400;
+}
+.product-info .attribute-selector .attribute-button {
+  border: 1px solid black !important;
+  min-width: 20px;
+  margin: 2px !important;
+  position: relative;
+  top: -20px;
+  font-size: 12px;
+}
+.attribute-button.selected .color-box {
+  border: 2px solid black;
+}
+/* Product Info */
+.product-info {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.product-price {
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+}
+
+/* Attributes Container */
+.attributes {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.attribute {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.attribute-label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Attribute Values */
+.attribute-values {
+  display: flex;
+  gap: 10px;
+}
+
+/* Buttons for Attributes */
+.attribute-value {
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.attribute-value.selected {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+/* Color Attribute (Color Box) */
+.color-box {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ddd;
+  transition: border 0.2s;
+}
+
+.attribute-value.selected .color-box {
+  border-color: #00c853;
+}
+
+.quantity-control {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.quantity-decrease,
+.quantity-increase {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.quantity-value {
+  margin: 5px 0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cart-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.place-order-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #60cc7c;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.place-order-button:hover {
+  background-color: #60cc7c;
+}
