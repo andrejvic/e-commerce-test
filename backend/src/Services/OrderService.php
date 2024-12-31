@@ -63,7 +63,7 @@ class OrderService {
 
             $successMessage = "Order created successfully with ID: $orderId";
             if (!empty($unavailableProducts)) {
-                $successMessage .= ". However, some products were unavailable: " . implode(", ", $unavailableProducts);
+                $successMessage .= ". Some products were unavailable: " . implode(", ", $unavailableProducts);
             }
 
             return [

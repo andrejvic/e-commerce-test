@@ -14,11 +14,11 @@ class OrderResponseType extends ObjectType
             'fields' => [
                 'successMessage' => [
                     'type' => Type::string(),
-                    'description' => 'Poruka o uspešnom kreiranju narudžbine',
+                    'description' => 'Order successfully created',
                 ],
                 'unavailableProducts' => [
                     'type' => Type::listOf(Type::string()),
-                    'description' => 'Lista proizvoda koji nisu dostupni',
+                    'description' => 'List of unavailable products',
                 ],
             ],
         ]);

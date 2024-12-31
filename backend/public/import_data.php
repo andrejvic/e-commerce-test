@@ -1,10 +1,9 @@
 <?php
 
-// Database connection settings
-$host = ''; // Usually localhost on Hostinger
-$dbName = ''; // Your database name
-$user = ''; // MySQL username
-$password = ''; // MySQL password
+$host = $_ENV['DB_HOST'];
+$dbName = $_ENV['DB_NAME'];
+$user = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASSWORD'];
 
 try {
     // Creating a PDO connection
